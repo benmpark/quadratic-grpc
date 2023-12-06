@@ -1,0 +1,35 @@
+// CSC6304 Week 2 Assignment
+// Benjamin Park
+// November 8, 2023
+
+// This is the .proto file to generate the necessary code
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.bmpark.grpc.quadratic";
+option java_outer_classname = "QuadraticProto";
+option objc_class_prefix = "QUA";
+
+package quadratic;
+
+// The quadratic service definition
+service Quadratic {
+    // Sends the three coefficients in a quadratic equation
+    rpc SolveQuadratic(Coefficients) returns (QuadraticSolution) {}
+}
+
+// The request message containing the three coefficients
+message Coefficients {
+    float a = 1;
+    float b = 2;
+    float c = 3;
+}
+
+// The response message containing the solutions
+message QuadraticSolution {
+    double positive_discriminant_solution_real = 1;
+    double positive_discriminant_solution_imaginary = 2;
+    double negative_discriminant_solution_real = 3;
+    double negative_discriminant_solution_imaginary = 4;
+}

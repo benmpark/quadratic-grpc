@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>quadratic_client API documentation</title>
+<meta name="description" content="The Python implementation of the gRPC quadratic solver client." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>quadratic_client</code></h1>
+</header>
+<section id="section-intro">
+<p>The Python implementation of the gRPC quadratic solver client.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># CSC6304 Week 2 Assignment
+# Benjamin Park
+# November 8, 2023
+
+&#34;&#34;&#34;The Python implementation of the gRPC quadratic solver client.&#34;&#34;&#34;
+
+from __future__ import print_function
+
+import logging
+
+import grpc
+import quadratic_pb2
+import quadratic_pb2_grpc
+
+
+def get_user_float(prompt: str) -&gt; float:
+    &#34;&#34;&#34;
+    Simple function to get a float from the user.
+
+    Checks to see if the user input is numerical and keeps prompting
+    until this condition has been satisfied.
+
+    Parameters
+    ----------
+    prompt
+        text to be displayed to the user when asking for the float
+
+    Returns
+    -------
+    float
+        the accepted user float
+    &#34;&#34;&#34;
+    while True:
+        try:
+            user_response = float(input(prompt))
+            break
+        except ValueError:
+            print(&#34;Your input should be numerical; &#34;
+                  + &#34;please check your input and try again.&#34;)
+    return user_response
+
+
+def get_user_coefficients() -&gt; (int, int, int):
+    &#34;&#34;&#34;
+    Helper function to get three coefficients from a quadratic equation.
+
+    Returns
+    -------
+    a : int
+        the coefficient of the x^2 term
+    b : int
+        the coefficient of the x term
+    c : int
+        the constant
+    &#34;&#34;&#34;
+    print(&#34;In your quadratic equation...&#34;)
+    a = get_user_float(&#34;...what is the coefficient of the x^2 term? &#34;)
+    b = get_user_float(&#34;...what is the coefficient of the x term? &#34;)
+    c = get_user_float(&#34;...and what is the constant term? &#34;)
+    return a, b, c
+
+
+def print_complex(real: float, imag: float) -&gt; None:
+    &#34;&#34;&#34;
+    Function to print a complex number.
+
+    Differentiates between a complex number with both real and imaginary parts
+    and one with only an imaginary component. (I.e., with real and imaginary
+    parts the formatting would be &#39;1 - i&#39;, whereas a purely imaginary number
+    would have no space between the negative sign and the i, such as &#39;-i&#39;.)
+
+    Parameters
+    ----------
+    real
+        the real component of the complex number, the &#39;a&#39; in &#39;a + bi&#39;
+    imag
+        the iamginary component of the complex number, the &#39;b&#39; in &#39;a + bi&#39;
+
+    Returns
+    -------
+    None
+    &#34;&#34;&#34;
+    output = &#34;&#34;
+    if real:
+        output += f&#34;{real} &#34;
+        output = output + f&#34;+ {imag}i&#34; if imag &gt; 0 \
+            else output + f&#34;- {abs(imag)}i&#34;
+    else:
+        output = &#34;&#34; if imag &gt; 0 else &#34;-&#34;
+        output = output + f&#34;{imag}i&#34; if imag &gt; 0 else output + f&#34;{abs(imag)}i&#34;
+    return output
+
+
+def print_solutions(
+    real1: float,
+    imag1: float,
+    real2: float,
+    imag2: float
+) -&gt; None:
+    &#34;&#34;&#34;
+    Helper function to print the quadratic solutions received from the server.
+
+    Parameters
+    ----------
+    real1
+        the real component of the first (positive discriminant) solution
+    imag1
+        the imaginary component of the first (positive discriminant) solution
+    real2
+        the real component of the second (negative discriminant) solution
+    imag2
+        the imaginary component of the second (negative discriminant) solution
+
+    Returns
+    -------
+    None
+    &#34;&#34;&#34;
+    if real1 == real2 and imag1 == 0:
+        print(&#34;Your quadratic equation has exactly one (real) solution:\n&#34;)
+        print(f&#34;x = {real1}&#34;)
+    elif imag1 == 0:
+        print(&#34;Your quadratic equation has two real solutions:\n&#34;)
+        print(f&#34;x = {real1} or x = {real2}&#34;)
+    else:
+        print(&#34;Your quadratic equation has two complex solutions:\n&#34;)
+        print(f&#34;x = {print_complex(real1, imag1)} or &#34;
+              + f&#34;x = {print_complex(real2, imag2)}&#34;)
+    print(&#34;\nHave a nice day!&#34;)
+
+
+def run():
+    # NOTE(gRPC Python Team): .close() is possible on a channel and should be
+    # used in circumstances in which the with statement does not fit the needs
+    # of the code.
+    a, b, c = get_user_coefficients()
+    print(&#34;\nWill try to do high school algebra...\n&#34;)
+    with grpc.insecure_channel(&#34;localhost:50051&#34;) as channel:
+        stub = quadratic_pb2_grpc.QuadraticStub(channel)
+        coefficients = quadratic_pb2.Coefficients(a=a, b=b, c=c)
+        response = stub.SolveQuadratic(coefficients)
+        print_solutions(
+            response.positive_discriminant_solution_real,
+            response.positive_discriminant_solution_imaginary,
+            response.negative_discriminant_solution_real,
+            response.negative_discriminant_solution_imaginary
+        )
+
+
+if __name__ == &#34;__main__&#34;:
+    logging.basicConfig()
+    run()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="quadratic_client.get_user_coefficients"><code class="name flex">
+<span>def <span class="ident">get_user_coefficients</span></span>(<span>) ‑> (<class 'int'>, <class 'int'>, <class 'int'>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper function to get three coefficients from a quadratic equation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>int</code></dt>
+<dd>the coefficient of the x^2 term</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>int</code></dt>
+<dd>the coefficient of the x term</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>int</code></dt>
+<dd>the constant</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_coefficients() -&gt; (int, int, int):
+    &#34;&#34;&#34;
+    Helper function to get three coefficients from a quadratic equation.
+
+    Returns
+    -------
+    a : int
+        the coefficient of the x^2 term
+    b : int
+        the coefficient of the x term
+    c : int
+        the constant
+    &#34;&#34;&#34;
+    print(&#34;In your quadratic equation...&#34;)
+    a = get_user_float(&#34;...what is the coefficient of the x^2 term? &#34;)
+    b = get_user_float(&#34;...what is the coefficient of the x term? &#34;)
+    c = get_user_float(&#34;...and what is the constant term? &#34;)
+    return a, b, c</code></pre>
+</details>
+</dd>
+<dt id="quadratic_client.get_user_float"><code class="name flex">
+<span>def <span class="ident">get_user_float</span></span>(<span>prompt: str) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Simple function to get a float from the user.</p>
+<p>Checks to see if the user input is numerical and keeps prompting
+until this condition has been satisfied.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>prompt</code></strong></dt>
+<dd>text to be displayed to the user when asking for the float</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>the accepted user float</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_user_float(prompt: str) -&gt; float:
+    &#34;&#34;&#34;
+    Simple function to get a float from the user.
+
+    Checks to see if the user input is numerical and keeps prompting
+    until this condition has been satisfied.
+
+    Parameters
+    ----------
+    prompt
+        text to be displayed to the user when asking for the float
+
+    Returns
+    -------
+    float
+        the accepted user float
+    &#34;&#34;&#34;
+    while True:
+        try:
+            user_response = float(input(prompt))
+            break
+        except ValueError:
+            print(&#34;Your input should be numerical; &#34;
+                  + &#34;please check your input and try again.&#34;)
+    return user_response</code></pre>
+</details>
+</dd>
+<dt id="quadratic_client.print_complex"><code class="name flex">
+<span>def <span class="ident">print_complex</span></span>(<span>real: float, imag: float) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to print a complex number.</p>
+<p>Differentiates between a complex number with both real and imaginary parts
+and one with only an imaginary component. (I.e., with real and imaginary
+parts the formatting would be '1 - i', whereas a purely imaginary number
+would have no space between the negative sign and the i, such as '-i'.)</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>real</code></strong></dt>
+<dd>the real component of the complex number, the 'a' in 'a + bi'</dd>
+<dt><strong><code>imag</code></strong></dt>
+<dd>the iamginary component of the complex number, the 'b' in 'a + bi'</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_complex(real: float, imag: float) -&gt; None:
+    &#34;&#34;&#34;
+    Function to print a complex number.
+
+    Differentiates between a complex number with both real and imaginary parts
+    and one with only an imaginary component. (I.e., with real and imaginary
+    parts the formatting would be &#39;1 - i&#39;, whereas a purely imaginary number
+    would have no space between the negative sign and the i, such as &#39;-i&#39;.)
+
+    Parameters
+    ----------
+    real
+        the real component of the complex number, the &#39;a&#39; in &#39;a + bi&#39;
+    imag
+        the iamginary component of the complex number, the &#39;b&#39; in &#39;a + bi&#39;
+
+    Returns
+    -------
+    None
+    &#34;&#34;&#34;
+    output = &#34;&#34;
+    if real:
+        output += f&#34;{real} &#34;
+        output = output + f&#34;+ {imag}i&#34; if imag &gt; 0 \
+            else output + f&#34;- {abs(imag)}i&#34;
+    else:
+        output = &#34;&#34; if imag &gt; 0 else &#34;-&#34;
+        output = output + f&#34;{imag}i&#34; if imag &gt; 0 else output + f&#34;{abs(imag)}i&#34;
+    return output</code></pre>
+</details>
+</dd>
+<dt id="quadratic_client.print_solutions"><code class="name flex">
+<span>def <span class="ident">print_solutions</span></span>(<span>real1: float, imag1: float, real2: float, imag2: float) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper function to print the quadratic solutions received from the server.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>real1</code></strong></dt>
+<dd>the real component of the first (positive discriminant) solution</dd>
+<dt><strong><code>imag1</code></strong></dt>
+<dd>the imaginary component of the first (positive discriminant) solution</dd>
+<dt><strong><code>real2</code></strong></dt>
+<dd>the real component of the second (negative discriminant) solution</dd>
+<dt><strong><code>imag2</code></strong></dt>
+<dd>the imaginary component of the second (negative discriminant) solution</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_solutions(
+    real1: float,
+    imag1: float,
+    real2: float,
+    imag2: float
+) -&gt; None:
+    &#34;&#34;&#34;
+    Helper function to print the quadratic solutions received from the server.
+
+    Parameters
+    ----------
+    real1
+        the real component of the first (positive discriminant) solution
+    imag1
+        the imaginary component of the first (positive discriminant) solution
+    real2
+        the real component of the second (negative discriminant) solution
+    imag2
+        the imaginary component of the second (negative discriminant) solution
+
+    Returns
+    -------
+    None
+    &#34;&#34;&#34;
+    if real1 == real2 and imag1 == 0:
+        print(&#34;Your quadratic equation has exactly one (real) solution:\n&#34;)
+        print(f&#34;x = {real1}&#34;)
+    elif imag1 == 0:
+        print(&#34;Your quadratic equation has two real solutions:\n&#34;)
+        print(f&#34;x = {real1} or x = {real2}&#34;)
+    else:
+        print(&#34;Your quadratic equation has two complex solutions:\n&#34;)
+        print(f&#34;x = {print_complex(real1, imag1)} or &#34;
+              + f&#34;x = {print_complex(real2, imag2)}&#34;)
+    print(&#34;\nHave a nice day!&#34;)</code></pre>
+</details>
+</dd>
+<dt id="quadratic_client.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run():
+    # NOTE(gRPC Python Team): .close() is possible on a channel and should be
+    # used in circumstances in which the with statement does not fit the needs
+    # of the code.
+    a, b, c = get_user_coefficients()
+    print(&#34;\nWill try to do high school algebra...\n&#34;)
+    with grpc.insecure_channel(&#34;localhost:50051&#34;) as channel:
+        stub = quadratic_pb2_grpc.QuadraticStub(channel)
+        coefficients = quadratic_pb2.Coefficients(a=a, b=b, c=c)
+        response = stub.SolveQuadratic(coefficients)
+        print_solutions(
+            response.positive_discriminant_solution_real,
+            response.positive_discriminant_solution_imaginary,
+            response.negative_discriminant_solution_real,
+            response.negative_discriminant_solution_imaginary
+        )</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="quadratic_client.get_user_coefficients" href="#quadratic_client.get_user_coefficients">get_user_coefficients</a></code></li>
+<li><code><a title="quadratic_client.get_user_float" href="#quadratic_client.get_user_float">get_user_float</a></code></li>
+<li><code><a title="quadratic_client.print_complex" href="#quadratic_client.print_complex">print_complex</a></code></li>
+<li><code><a title="quadratic_client.print_solutions" href="#quadratic_client.print_solutions">print_solutions</a></code></li>
+<li><code><a title="quadratic_client.run" href="#quadratic_client.run">run</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
